@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+dt=`date +'%m-%d-%Y'`;
+N="${dt}_${1}"
+hugo new posts/${N};
