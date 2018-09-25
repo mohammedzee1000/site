@@ -29,3 +29,4 @@ cd ..
 # Add to track changes to this repo
 git add ./public
 git commit -m "Adding and tracking changes to public"
+git push
