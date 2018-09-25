@@ -26,7 +26,10 @@ enableEmoji=true
 	favicon = "/img/defaultFav.ico"
 
   	#Background settings
-	enableColorBG= true
+	enableColorBG= false
+	bgImage = "https://i.imgur.com/UyzdNMD.png"
+#	bgList = ["https://i.imgur.com/eUbCxlN.jpg", "https://i.imgur.com/UyzdNMD.png"]
+	bgBlur = true
 
 	#Post-displaying Settings
 	enableTags = true
