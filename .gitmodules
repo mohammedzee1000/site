@@ -1,0 +1,7 @@
+[submodule "themes/dream-plus"]
+	path = themes/dream-plus
+	url = https://github.com/UtkarshVerma/hugo-dream-plus
+[submodule "public"]
+	path = public
+	url = git@github.com:mohammedzee1000/mohammedzee1000.github.io.git
+	branch = master

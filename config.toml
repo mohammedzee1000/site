@@ -1,0 +1,55 @@
+baseURL = "http://dream-plus.netlify.com/"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Mohammed Zeeshan Ahmed's Blog"
+theme = "dream-plus"
+
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+pygmentsOptions = "linenos=table"
+
+disqusShortname = "mzee1000-io"
+
+enableRobotsTXT = true
+
+#Enable Hugo Emoji Conversion
+enableEmoji=true
+
+[params]
+	author = "Mohammed Zeeshan Ahmed"
+	description = "Just a random blog for random stuff, mostly tech-related. Opinions expressed are mine."
+	avatar = "https://github.com/mohammedzee1000.png"
+	motto = "A keen maker, programmer, engineer, sysadmin and FOSS enthusiast."
+	enableToc = true
+	enableShareCard = true
+
+	favicon = "/img/defaultFav.ico"
+
+  	#Background settings
+	enableColorBG= true
+
+	#Post-displaying Settings
+	enableTags = true
+	enableCategories = true
+
+	customCSS = ["https://cdn.rawgit.com/UtkarshVerma/hugo-dream-plus/ae11561d/exampleSite/static/css/highlight.css"]
+
+	#Cards or posts shown per page
+	itemsPerPage = 4
+
+	#Set whether you're hosting "cards" or "post"
+	contentType = "posts"
+
+	#Enable Twitter Emoji
+	twitterEmoji=true
+
+[social]
+	email = "mohammed.zee1000@gmail.com"
+	github = "mohammedzee1000"
+	stackoverflow = "6257518/mohammed-zeeshan"
+	medium = "mohammedzeeshanahmed"
+	linkedin = "mohammedzee1000"
+	twitter = "zee_10000"
+	facebook = "mohammed.zee1000"
+	youtube = "mohammed.zee1000"
+	siteStartYear = 2018
