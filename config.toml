@@ -27,8 +27,8 @@ enableEmoji=true
 
   	#Background settings
 	enableColorBG= false
-	bgImage = "https://i.imgur.com/UyzdNMD.png"
-#	bgList = ["https://i.imgur.com/eUbCxlN.jpg", "https://i.imgur.com/UyzdNMD.png"]
+#	bgImage = "https://i.imgur.com/UyzdNMD.png"
+	bgList = ["https://i.imgur.com/eUbCxlN.jpg", "https://i.imgur.com/UyzdNMD.png"]
 	bgBlur = true
 
 	#Post-displaying Settings
