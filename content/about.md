@@ -3,26 +3,7 @@
 ----
 <br>
 
-Hi, I am Mohammed Zeeshan Ahmed and  I am a technologist, engineer, linux lover and free and open source software enthusiast.
-
-I fell in love with linux at a very young age (when I was in 4th standard actually when I wrote my first Hello world program in C on a Unix based computer. I transitioned Unix –> Linux soon after though exactly how soon, my memory fails me), though I got introduced to technology much earlier though 8-bit gaming consoles and my first Pentium 3 based computer running Windows 95.
-
-I have been an avid linux user ever since, with my favorite distributions being Fedora, openSUSE, CentOS, Ubuntu, Linux Mint and Blackbox.
-
-Of course, as a gamer I do have good hand with the Windows Operating System as well .
-
-I love programming, and yes proudly say that I am a hacker, in the true sense of the word.
-
-Freenode : #mzee1000 (on  #nulecule, #atomic, #fedora-cloud, #fedora-devel, #openstack, #centos, #centos-devel,, #fedora-india, #dgplug )
-
-Kubernetes Slack : @mzee1000 on kubernetes-users, kubernetes-dev ,sig-release, sig-network, sig-storage, sig-auth, sig-instrumentation, sig-docs, sig-contribex, sig-scalability, sig-apps
-
-If what you want is a resume, then you can check out right here.
-
-Public GPG Key : https://pgp.mit.edu/pks/lookup?op=get&search=0x147A8569AFC5E9ED
-
-Geek Code :
-
+## Geek Code [Non Geeks - Just paste below code [here](http://www.joereiss.net/geek/ungeek.html)]:
 ```
 -----BEGIN GEEK CODE BLOCK-----
 Version: 3.1
@@ -31,5 +12,55 @@ E@ W+++$ N++ o+++ K--? w++++ O M+ !V PS+ PE Y++ PGP++
 t+ 5+ !X R+ tv b+++ DI++ D+ G+ e++ h-- r+++ y+++(+)
 ------END GEEK CODE BLOCK------
 ```
+
+Hi, I am Mohammed Zeeshan Ahmed and  I am a technologist, engineer, linux lover and free and open source software enthusiast.
+
+I fell in love with linux at a very young age (when I was in 4th standard actually when I wrote my first Hello world program in C on a Unix based computer. I transitioned Unix –> Linux soon after though exactly how soon, my memory fails me), though I got introduced to technology much earlier though 8-bit gaming consoles and my first Pentium 3 based computer running Windows 95.
+
+I have been an avid linux user ever since, with my favorite distributions being Fedora, Arch, openSUSE, CentOS, Ubuntu, Linux Mint and Blackbox.
+
+When I am not riding my keyboard, I enjoy travelling, am an avid reader and love to establish genuine lasting relationships with people :). I am also a computer gamer.
+
+Of course, as a gamer I do have good hand with the Windows Operating System as well.
+
+I love programming, and yes proudly say that I am a hacker, in the true sense of the word.
+
+## Where I hangout
+
+### IRC
+
+#### Freenode
+Nick: mzee1000
+
+#### Channels :
+ - #atomic
+ - #fedora-cloud
+ - #fedora-devel
+ - #openstack
+ - #centos
+ - #centos-devel
+ - #fedora-india
+ - #dgplug
+ - #coreos
+ 
+### Slack
+
+#### Kubernetes
+Nick: @mzee1000
+
+#### Channels
+ - kubernetes-users
+ - kubernetes-dev
+ - sig-release
+ - sig-network
+ - sig-storage
+ - sig-auth
+ - sig-instrumentation
+ - sig-docs
+ - sig-contribex
+ - sig-scalability
+ - sig-apps
+
+Public GPG Key : https://pgp.mit.edu/pks/lookup?op=get&search=0x147A8569AFC5E9ED
 
 <iframe src="https://ghbtns.com/github-btn.html?user=mohammedzee1000&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="280px" height="30px"></iframe>
