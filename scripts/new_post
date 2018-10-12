@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 dt=`date +'%m-%d-%Y'`;
-N="${dt}_${1}"
-hugo new posts/${N}.md;
+N="${dt}_${1}.md"
+hugo new posts/${N};
+vi ${N};
