@@ -3,10 +3,6 @@
 ----
 <br>
 
-**NOTE:**
-
-Known issue of missing Linkedin icon. Until fix is in, you can see my **[linkedin](https://www.linkedin.com/in/mohammedzee1000/)**
-
 ## Geek Code [Non Geeks - Just paste below code [here](http://www.joereiss.net/geek/ungeek.html)]:
 ```
 -----BEGIN GEEK CODE BLOCK-----
