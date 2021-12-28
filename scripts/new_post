@@ -2,5 +2,5 @@
 
 dt=`date +'%m-%d-%Y'`;
 N="${dt}_${1}.md"
-hugo new posts/${N};
+hugo new content/posts/${N};
 vi ${N};

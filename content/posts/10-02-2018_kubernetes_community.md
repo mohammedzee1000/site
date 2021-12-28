@@ -1,11 +1,13 @@
 ---
-title: "Kontributing to Kubernetes - The Six Month Checkpoint"
+title: "Kontributing to Kubernetes"
 date: 2018-10-02T20:21:10+05:30
 draft: false
 categories: ["blogging", "opensource", "containers", "engineering"]
 tags: ["code", "experience", "go", "kubernetes", "CI/CD", "learning"]
 description: "My experiences so far, with this amazing community."
 ---
+
+The Six Month Checkpoint:
 
 I still cannot believe it. It was slightly more than 6 months ago, that i started contributing to [Kubernetes](https://kubernetes.io/).
 

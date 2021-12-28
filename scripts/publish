@@ -8,25 +8,17 @@ hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 # Copy cname
 cp -avrf CNAME public/
 
-# Go To Public folder
-cd public
-# Add changes to git.
+# reclone the website
+rm -rf /tmp/mysite
+git clone git@github.com:mohammedzee1000/mohammedzee1000.github.io.git /tmp/mysite
+
+# update content in site after removing what is there
+rm -rf /tmp/mysite/*
+cp -avrf public/* /tmp/mysite/
+
+pushd /tmp/mysite
 git add .
-
-# Commit changes.
-msg="rebuilding site `date`"
-if [ $# -eq 1 ]
-  then msg="$1"
-fi
-git commit -m "$msg"
-
-# Push source and build repos.
-git push origin master
-
-# Come Back up to the Project Root
-cd ..
-
-# Add to track changes to this repo
-git add ./public
-git commit -m "Adding and tracking changes to public"
+git commit -sm "Updating site content"
 git push
+popd
+rm -rf public

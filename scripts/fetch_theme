@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -x
+
+th_dir="./themes/"
+
+if [ "$#" -ne 2 ]; then
+	echo "Usage: $0 THEME_NAME THEME REPO" >&2
+ 	exit 1
+fi
+
+th_name=$1
+th_repo=$2
+
+rm -rf $th_dir/$th_name && mkdir $th_dir/$th_name
+
+cl_loc="`mktemp -d`"
+git clone $th_repo $cl_loc/$th_name
+cp -avrf $cl_loc/$th_name/* $th_dir/$th_name

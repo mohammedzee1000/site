@@ -1,58 +1,68 @@
 baseURL = "http://mzee1000.io/"
 languageCode = "en-us"
-defaultContentLanguage = "en"
 title = "Mohammed Zeeshan Ahmed's Blog"
-theme = "dream-plus"
-
-pygmentsCodeFences = true
-pygmentsUseClasses = true
-pygmentsOptions = "linenos=table"
-
+theme = "hugo-coder"
+defaultcontentlanguage = "en"
+paginate = 20
 disqusShortname = "mzee1000-io"
-
-enableRobotsTXT = true
-
 #Enable Hugo Emoji Conversion
 enableEmoji=true
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
 
 [params]
 	author = "Mohammed Zeeshan Ahmed"
 	description = "Just a random blog for random stuff, mostly tech-related. Opinions expressed are mine."
-	avatar = "https://github.com/mohammedzee1000.png"
+	avatarurl = "https://github.com/mohammedzee1000.png"
 	motto = "A keen maker, programmer, engineer, sysadmin and FOSS enthusiast."
-	enableToc = true
-	enableShareCard = true
-
+	keywords = "blog,developer,personal"
+	info = ["Software Engineer", "Devops", "Programmer"]
 	favicon = "/img/defaultFav.ico"
-
-  	#Background settings
-	enableColorBG= false
-#	bgImage = "https://i.imgur.com/UyzdNMD.png"
-	bgList = ["https://i.imgur.com/eUbCxlN.jpg", "https://i.imgur.com/UyzdNMD.png"]
-	bgBlur = true
-
-	#Post-displaying Settings
-	enableTags = true
-	enableCategories = true
-
-	customCSS = ["https://cdn.rawgit.com/UtkarshVerma/hugo-dream-plus/ae11561d/exampleSite/static/css/highlight.css"]
-
-	#Cards or posts shown per page
-	itemsPerPage = 4
-
-	#Set whether you're hosting "cards" or "post"
-	contentType = "posts"
 
 	#Enable Twitter Emoji
 	twitterEmoji=true
+	since = 2019
+	dateFormat = "January 2, 2006"
+	colorScheme = "auto"
 
-[social]
-	email = "mohammed.zee1000@gmail.com"
-	github = "mohammedzee1000"
-	linkedin = "mohammedzee1000"
-	stackoverflow = "6257518/mohammed-zeeshan"
-	medium = "mohammedzeeshanahmed"
-	twitter = "zee_10000"
-	facebook = "mohammed.zee1000"
-	youtube = "mohammed.zee1000"
-	siteStartYear = 2018
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+  author = "authors"
+
+
+# Social links
+[[params.social]]
+  name = "Github"
+  icon = "fa fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/mohammedzee1000/"
+#[[params.social]]
+#  name = "Gitlab"
+#  icon = "fa fa-gitlab fa-2x"
+#  weight = 2
+#  url = "https://gitlab.com/johndoe/"
+[[params.social]]
+  name = "Twitter"
+  icon = "fa fa-twitter fa-2x"
+  weight = 2
+  url = "https://twitter.com/zee_10000/"
+
+[[params.social]]
+  name = "LinkedIn"
+  icon = "fa fa-2x fa-linkedin"
+  weight = 3
+  url = "https://www.linkedin.com/in/mohammedzee1000/"
+
+# Menu links
+[[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
+[[menu.main]]
+  name = "About"
+  weight = 2
+  url = "about/"
