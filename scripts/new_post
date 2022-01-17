@@ -3,4 +3,4 @@
 dt=`date +'%m-%d-%Y'`;
 N="${dt}_${1}.md"
 hugo new content/posts/${N};
-vi ${N};
+vi content/posts/${N};
