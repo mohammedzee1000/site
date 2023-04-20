@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+EDITOR=vi
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     EDITOR=vim;;
+    Darwin*)    EDITOR=nvim;;
+    CYGWIN*)    EDITOR=vim;;
+    MINGW*)     EDITOR=vi;
+    *)          EDITOR=vi"
+esac
+
+
 dt=`date +'%m-%d-%Y'`;
 N="${dt}_${1}.md"
 hugo new content/posts/${N};
