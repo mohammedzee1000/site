@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+echo ${machine}
+
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
 # Build the project.
@@ -14,7 +24,11 @@ git clone git@github.com:mohammedzee1000/mohammedzee1000.github.io.git /tmp/mysi
 
 # update content in site after removing what is there
 rm -rf /tmp/mysite/*
-cp -avrf public/* /tmp/mysite/
+if [[ ${machine} == "Mac" ]]; then
+    cp -avf public/* /tmp/mysite/
+else
+    cp -avrf public/* /tmp/mysite/
+fi
 
 pushd /tmp/mysite
 git add .
