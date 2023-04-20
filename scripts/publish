@@ -8,7 +8,7 @@ case "${unameOut}" in
     MINGW*)     machine=MinGw;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
-echo ${machine}
+echo "${machine}"
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
