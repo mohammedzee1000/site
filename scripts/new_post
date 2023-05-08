@@ -7,12 +7,12 @@ case "${unameOut}" in
     Linux*)     EDITOR=vim;;
     Darwin*)    EDITOR=nvim;;
     CYGWIN*)    EDITOR=vim;;
-    MINGW*)     EDITOR=vi;
-    *)          EDITOR=vi"
+    MINGW*)     EDITOR=vi;;
+    *)          EDITOR=vi
 esac
 
 
 dt=`date +'%m-%d-%Y'`;
 N="${dt}_${1}.md"
 hugo new content/posts/${N};
-vi content/posts/${N};
+${EDITOR} content/posts/${N};

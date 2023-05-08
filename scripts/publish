@@ -15,18 +15,17 @@ echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 # Build the project.
 hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 
-# Copy cname
-cp -avrf CNAME public/
-
 # reclone the website
 rm -rf /tmp/mysite
 git clone git@github.com:mohammedzee1000/mohammedzee1000.github.io.git /tmp/mysite
 
-# update content in site after removing what is there
+# copy cname and update content in site after removing what is there
 rm -rf /tmp/mysite/*
 if [[ ${machine} == "Mac" ]]; then
     cp -avf public/* /tmp/mysite/
+    cp -avf CNAME /tmp/mysite/
 else
+    cp -avrf CNAME public/
     cp -avrf public/* /tmp/mysite/
 fi
 

@@ -2,6 +2,17 @@
 
 set -x
 
+EDITOR=vi
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     OS=linux;;
+    Darwin*)    OS=darwin;;
+    CYGWIN*)    OS=cygwin;;
+    MINGW*)     OS=mingw;;
+    *)          OS=unknown
+esac
+
 th_dir="./themes/"
 
 if [ "$#" -ne 2 ]; then
@@ -14,6 +25,10 @@ th_repo=$2
 
 rm -rf $th_dir/$th_name && mkdir $th_dir/$th_name
 
-cl_loc="`mktemp -d`"
-git clone $th_repo $cl_loc/$th_name
-cp -avrf $cl_loc/$th_name/* $th_dir/$th_name
+cl_loc="`mktemp -d`";
+git clone $th_repo $cl_loc/$th_name;
+if [[ ${OS} == "darwin" ]]; then
+    cp -avf $cl_loc/$th_name/* $th_dir/$th_name
+else
+    cp -avrf $cl_loc/$th_name/* $th_dir/$th_name
+fi
