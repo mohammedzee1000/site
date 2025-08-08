@@ -1,62 +1,90 @@
-baseURL: 'http://mzee1000.io/'
+baseURL: "https://mzee1000.io/"
 languageCode: en-us
-title: Mohammed Zeeshan Ahmed's Blog
-theme: hugo-coder
-defaultcontentlanguage: en
-paginate: 20
-disqusShortname: mzee1000-io
+title: "Mohammed Zeeshan Ahmed's Blog"
+defaultContentLanguage: en
+pagination:
+  pagerSize: 20
 enableEmoji: true
-pygmentsstyle: bw
-pygmentscodefences: true
-pygmentscodefencesguesssyntax: true
+enableRobotsTXT: true
 pluralizeListTitles: false
 preserveTaxonomyNames: true
+canonifyURLs: true
+
+# Modules
+module:
+  imports:
+    - path: github.com/panr/hugo-theme-terminal
+
+# Markdown & code highlighting (Chroma)
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    style: bw
+    guessSyntax: true
+    lineNos: false
+
+services:
+  disqus:
+    shortname: mzee1000-io
+
+# -------- Terminal theme params --------
 params:
-    author: Mohammed Zeeshan Ahmed
-    description: >-
-        Just a random blog for random stuff, mostly tech-related. Opinions
-        expressed are mine.
-    avatarurl: 'https://github.com/mohammedzee1000.png'
-    motto: 'A keen maker, programmer, engineer, sysadmin and FOSS enthusiast.'
-    keywords: 'blog,developer,personal'
-    info:
-        - Software Engineer
-        - Devops
-        - Programmer
-    favicon: /img/defaultFav.ico
-    twitterEmoji: true
-    since: 2019
-    dateFormat: 'January 2, 2006'
-    colorScheme: auto
-    social:
-        -
-            name: Github
-            icon: fa fa-github fa-2x
-            weight: 1
-            url: 'https://github.com/mohammedzee1000/'
-        -
-            name: Twitter
-            icon: fa fa-twitter fa-2x
-            weight: 2
-            url: 'https://twitter.com/zee_10000/'
-        -
-            name: LinkedIn
-            icon: fa fa-2x fa-linkedin
-            weight: 3
-            url: 'https://www.linkedin.com/in/mohammedzee1000/'
+  # Site identity
+  title: "Mohammed Zeeshan Ahmed"
+  subtitle: "A keen maker, programmer, engineer, sysadmin and FOSS enthusiast."
+  description: >
+    Just a random blog for random stuff, mostly tech-related. Opinions expressed are mine.
+
+  # Theme look & layout
+  centerTheme: false      # center main column
+  fullWidthTheme: false  # set true for wide layout
+  favicon: "/images/favicon.png"
+  enableGitInfo: true
+
+  # Content/UX
+  readingTime: true
+  toc: true               # per-post ToC (works if your content has headings)
+  dateFormat: "January 2, 2006"
+
+  # Footer/copyright (optional)
+  #footerCopyright: "© 2019–present Mohammed Zeeshan Ahmed"
+  footerCopyright: "2019–present Mohammed Zeeshan Ahmed"
+
+  # Social links shown in header/footer (Terminal supports simple icon names; FA works if theme has it)
+  social:
+    - name: Email
+      url: "mailto:mohammed.zee1000@gmail.com"
+      icon: "envelope"
+    - name: GitHub
+      url: "https://github.com/mohammedzee1000/"
+      icon: "github"
+    - name: Twitter
+      url: "https://twitter.com/zee_10000/"
+      icon: "twitter"
+    - name: LinkedIn
+      url: "https://www.linkedin.com/in/mohammedzee1000/"
+      icon: "linkedin"
+
+  # Extra meta
+  author: "Mohammed Zeeshan Ahmed"
+  since: 2019
+  avatarurl: "https://github.com/mohammedzee1000.png"
+
 taxonomies:
-    category: categories
-    series: series
-    tag: tags
-    author: authors
+  category: categories
+  series: series
+  tag: tags
+  author: authors
+
 menu:
-    main:
-        -
-            name: About
-            weight: 1
-            url: about/
-        -
-            name: Blog
-            weight: 2
-            url: posts/
+  main:
+    - name: About
+      weight: 1
+      url: "/about/"
+    - name: Blog
+      weight: 2
+      url: "/posts/"
 

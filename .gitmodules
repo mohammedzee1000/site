@@ -5,3 +5,9 @@
 	path = public
 	url = git@github.com:mohammedzee1000/mohammedzee1000.github.io.git
 	branch = master
+[submodule "themes/hugo-coder"]
+	path = themes/hugo-coder
+	url = https://github.com/luizdepra/hugo-coder.git
+[submodule "themes/terminal"]
+	path = themes/terminal
+	url = https://github.com/panr/hugo-theme-terminal.git

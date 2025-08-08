@@ -1,0 +1,19 @@
+<footer class="site-footer">
+  {{ with .Site.Params.footerCopyright }}
+  <div class="site-copyright">
+    {{ . | safeHTML }}
+  </div>
+  {{ end }}
+  <div class="site-social">
+    <ul class="social-list">
+      {{ range .Site.Params.social }}
+      <li>
+        <a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }}">
+          {{ partial "social-icon.html" . }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</footer>
+

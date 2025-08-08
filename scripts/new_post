@@ -1,18 +1,52 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-EDITOR=vi
+# Usage:
+#   scripts/new_post "My Post Title" [tag1,tag2] [category1,category2]
 
-unameOut="$(uname -s)"
-case "${unameOut}" in
-    Linux*)     EDITOR=vim;;
-    Darwin*)    EDITOR=nvim;;
-    CYGWIN*)    EDITOR=vim;;
-    MINGW*)     EDITOR=vi;;
-    *)          EDITOR=vi
-esac
+[[ $# -ge 1 ]] || { echo "Usage: $0 \"Post Title\" [tags] [categories]"; exit 1; }
 
+# Editor selection
+if command -v nvim >/dev/null 2>&1; then
+  EDITOR_CMD=nvim
+elif command -v vim >/dev/null 2>&1; then
+  EDITOR_CMD=vim
+else
+  EDITOR_CMD=vi
+fi
 
-dt=$(date +'%m-%d-%Y');
-N="${dt}_${1}.md"
-hugo new content/posts/${N};
-${EDITOR} content/posts/${N};
+title="$1"
+tags="${2-}"
+cats="${3-}"
+
+# slugify for filename
+slug="$(printf '%s' "$title" \
+  | tr '[:upper:]' '[:lower:]' \
+  | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')"
+
+dt="$(date +'%m-%d-%Y')"
+fname="${dt}_${slug}.md"
+
+# Create using the posts archetype (path is relative to content/)
+hugo new "posts/${fname}" >/dev/null
+
+post_path="content/posts/${fname}"
+
+# Fill title explicitly (in case you prefer exact casing)
+# and optionally inject tags/categories
+# (works with YAML or TOML front matter created by the archetype)
+if grep -q '^title:' "$post_path"; then
+  # YAML
+  sed -i'' -E "s/^title:.*/title: \"${title//\"/\\\"}\"/" "$post_path"
+  [[ -n "$tags" ]] && sed -i'' -E "s/^tags:.*/tags: [${tags}]/" "$post_path"
+  [[ -n "$cats" ]] && sed -i'' -E "s/^categories:.*/categories: [${cats}]/" "$post_path"
+elif grep -q '^title *= *' "$post_path"; then
+  # TOML
+  sed -i'' -E "s/^title *= *.*/title = \"${title//\"/\\\"}\"/" "$post_path"
+  [[ -n "$tags" ]] && sed -i'' -E "s/^tags *= *.*/tags = [${tags}]/" "$post_path"
+  [[ -n "$cats" ]] && sed -i'' -E "s/^categories *= *.*/categories = [${cats}]/" "$post_path"
+fi
+
+# Open the file
+$EDITOR_CMD "$post_path"
+

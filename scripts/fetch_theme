@@ -1,34 +1,105 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-set -x
+# Usage:
+#   scripts/fetch_theme [-b <branch>] [--force] <THEME_NAME> <THEME_REPO>
+#
+# Examples:
+#   scripts/fetch_theme terminal https://github.com/panr/hugo-theme-terminal.git
+#   scripts/fetch_theme -b master hugo-coder https://github.com/luizdepra/hugo-coder.git
+#   scripts/fetch_theme --force hugo-coder https://github.com/luizdepra/hugo-coder.git
 
-EDITOR=vi
+THEMES_DIR="themes"
+BRANCH=""
+FORCE=0
 
-unameOut="$(uname -s)"
-case "${unameOut}" in
-    Linux*)     OS=linux;;
-    Darwin*)    OS=darwin;;
-    CYGWIN*)    OS=cygwin;;
-    MINGW*)     OS=mingw;;
-    *)          OS=unknown
-esac
+die() { echo "Error: $*" >&2; exit 1; }
 
-th_dir="./themes/"
+# Parse flags
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -b|--branch)
+      shift
+      [[ $# -gt 0 ]] || die "Missing value for -b|--branch"
+      BRANCH="$1"
+      shift
+      ;;
+    --force)
+      FORCE=1
+      shift
+      ;;
+    -*)
+      die "Unknown option: $1"
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
 
-if [ "$#" -ne 2 ]; then
-	echo "Usage: $0 THEME_NAME THEME REPO" >&2
- 	exit 1
+# Positional args
+[[ $# -eq 2 ]] || die "Usage: $0 [-b <branch>] [--force] <THEME_NAME> <THEME_REPO>"
+THEME_NAME="$1"
+THEME_REPO="$2"
+
+THEME_PATH="${THEMES_DIR}/${THEME_NAME}"
+
+# Ensure we're in a git repo
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 || die "Run from within a Git repository"
+
+mkdir -p "${THEMES_DIR}"
+
+# Detect if path is already a submodule
+if git submodule status -- "${THEME_PATH}" >/dev/null 2>&1; then
+  echo "[i] Submodule exists at ${THEME_PATH}. Syncing URL and updating…"
+  # Sync URL if changed
+  CURRENT_URL="$(git config -f .gitmodules "submodule.${THEME_PATH}.url" || true)"
+  if [[ -n "${CURRENT_URL}" && "${CURRENT_URL}" != "${THEME_REPO}" ]]; then
+    echo "[i] Updating submodule URL: ${CURRENT_URL} -> ${THEME_REPO}"
+    git submodule set-url -- "${THEME_PATH}" "${THEME_REPO}"
+  fi
+  git submodule sync --recursive "${THEME_PATH}"
+  if [[ -n "${BRANCH}" ]]; then
+    git submodule update --init --remote --recursive -- "${THEME_PATH}"
+    git -C "${THEME_PATH}" fetch origin "${BRANCH}"
+    git -C "${THEME_PATH}" checkout "${BRANCH}"
+  else
+    git submodule update --init --remote --recursive -- "${THEME_PATH}"
+  fi
+  echo "[✓] Updated submodule ${THEME_NAME}"
+  exit 0
 fi
 
-th_name=$1
-th_repo=$2
-
-rm -rf $th_dir/$th_name && mkdir $th_dir/$th_name
-
-cl_loc="`mktemp -d`";
-git clone $th_repo $cl_loc/$th_name;
-if [[ ${OS} == "darwin" ]]; then
-    cp -avf $cl_loc/$th_name/* $th_dir/$th_name
-else
-    cp -avrf $cl_loc/$th_name/* $th_dir/$th_name
+# If directory exists but isn't a submodule
+if [[ -d "${THEME_PATH}" && ! -e "${THEME_PATH}/.git" ]]; then
+  if [[ "${FORCE}" -eq 1 ]]; then
+    echo "[i] Converting existing directory to submodule (force)…"
+    # Remove tracked files at that path, keep working tree intact
+    if git ls-files --error-unmatch "${THEME_PATH}" >/dev/null 2>&1; then
+      git rm -r --cached "${THEME_PATH}"
+      git commit -m "Remove ${THEME_PATH} to convert to submodule" || true
+    fi
+    rm -rf "${THEME_PATH}"
+  else
+    die "${THEME_PATH} exists and is not a submodule. Re-run with --force to convert."
+  fi
 fi
+
+# Add as new submodule
+echo "[i] Adding ${THEME_NAME} as submodule from ${THEME_REPO}"
+git submodule add "${THEME_REPO}" "${THEME_PATH}"
+
+# Optionally pin to a branch
+if [[ -n "${BRANCH}" ]]; then
+  git -C "${THEME_PATH}" fetch origin "${BRANCH}"
+  git -C "${THEME_PATH}" checkout "${BRANCH}"
+fi
+
+git add .gitmodules "${THEME_PATH}"
+git commit -m "Add theme submodule: ${THEME_NAME}" || true
+
+# Final update to ensure it's initialized
+git submodule update --init --recursive "${THEME_PATH}"
+
+echo "[✓] Theme ready at ${THEME_PATH}"
+

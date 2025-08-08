@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Engineering on Mohammed Zeeshan Ahmed&#39;s Blog</title>
+    <link>http://localhost:1313/categories/engineering/</link>
+    <description>Recent content in Engineering on Mohammed Zeeshan Ahmed&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Jan 2022 14:06:17 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>6 Years @ Red Hat</title>
+      <link>http://localhost:1313/posts/01-26-2022_6_years/</link>
+      <pubDate>Wed, 26 Jan 2022 14:06:17 +0530</pubDate>
+      <guid>http://localhost:1313/posts/01-26-2022_6_years/</guid>
+      <description>&lt;p&gt;I still cant believe that I just recently completed my 6th year at Red Hat&#xA;as a Software Engineer.&lt;/p&gt;&#xA;&lt;p&gt;It was on 18th January 2016, 6 years ago, that I joined Red Hat as a software engineer, after a short 5 month stint as a system adminstrator. During this period, I learnt a lot of stuff from people all around me, both from the Kubernetes Community, as well as people at Red hat.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kontributing to Kubernetes</title>
+      <link>http://localhost:1313/posts/10-02-2018_kubernetes_community/</link>
+      <pubDate>Tue, 02 Oct 2018 20:21:10 +0530</pubDate>
+      <guid>http://localhost:1313/posts/10-02-2018_kubernetes_community/</guid>
+      <description>&lt;p&gt;The Six Month Checkpoint:&lt;/p&gt;&#xA;&lt;p&gt;I still cannot believe it. It was slightly more than 6 months ago, that i started contributing to &lt;a href=&#34;https://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I had joined &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt;, approximately 2 and half years ago, working on container technologies, mostly with tools to help developers get an easy path into the world of containers, and of&#xA;Kubernetes.&lt;/p&gt;&#xA;&lt;p&gt;While i got a lot of experience with Kubernetes, via &lt;a href=&#34;https://www.okd.io/&#34;&gt;OpenShift&lt;/a&gt;, i never really got an opportunity to contribute to the project itself, except for a stray issue or two. I did get to interact with some amazing people who contributed to the project, such as &lt;a href=&#34;https://twitter.com/TheNikhita&#34;&gt;Nikita&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/fuzzychef&#34;&gt;Josh Berkus&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
