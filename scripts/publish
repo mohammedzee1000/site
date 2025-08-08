@@ -1,37 +1,47 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-unameOut="$(uname -s)"
-case "${unameOut}" in
-    Linux*)     machine=Linux;;
-    Darwin*)    machine=Mac;;
-    CYGWIN*)    machine=Cygwin;;
-    MINGW*)     machine=MinGw;;
-    *)          machine="UNKNOWN:${unameOut}"
-esac
-echo "${machine}"
+echo -e "\033[0;32mDeploying updates to GitHub Pages...\033[0m"
 
-echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
-
-# Build the project.
-hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
-
-# reclone the website
-rm -rf /tmp/mysite
-git clone git@github.com:mohammedzee1000/mohammedzee1000.github.io.git /tmp/mysite
-
-# copy cname and update content in site after removing what is there
-rm -rf /tmp/mysite/*
-if [[ ${machine} == "Mac" ]]; then
-    cp -avf public/* /tmp/mysite/
-    cp -avf CNAME /tmp/mysite/
-else
-    cp -avrf CNAME public/
-    cp -avrf public/* /tmp/mysite/
+# Optional: refuse to publish with a dirty working tree
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "⚠️  Working tree is dirty. Commit or stash changes before publishing."
+  exit 1
 fi
 
-pushd /tmp/mysite
-git add .
-git commit -sm "Updating site content"
-git push
-popd
+# Ensure CNAME is handled automatically by Hugo (do this once in your repo)
+#   echo "mzee1000.io" > static/CNAME
+# Then you can forget about it here.
+
+# Build production site
+HUGO_ENV=production hugo --gc --minify --cleanDestinationDir
+
+# Clone target Pages repo into a temp dir
+TARGET_REPO_SSH="git@github.com:mohammedzee1000/mohammedzee1000.github.io.git"
+TMP_DIR="$(mktemp -d)"
+git clone "$TARGET_REPO_SSH" "$TMP_DIR"
+
+# Sync built site -> repo (preserve .git, delete removed files)
+# Requires rsync (present on macOS/Linux). If not, fallback to cp -a.
+if command -v rsync >/dev/null 2>&1; then
+  rsync -av --delete --exclude ".git" public/ "$TMP_DIR"/
+else
+  # Fallback (less ideal because it won’t delete removed files cleanly)
+  rm -rf "$TMP_DIR"/*
+  cp -a public/. "$TMP_DIR"/
+fi
+
+# Commit & push
+git -C "$TMP_DIR" add -A
+if git -C "$TMP_DIR" diff --cached --quiet; then
+  echo "No changes to publish."
+else
+  git -C "$TMP_DIR" commit -m "Publish $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+  git -C "$TMP_DIR" push
+fi
+
+# Cleanup
+rm -rf "$TMP_DIR"
 rm -rf public
+echo "✅ Deploy done."
+
