@@ -31,6 +31,9 @@ else
   cp -a public/. "$TMP_DIR"/
 fi
 
+# copy CNAME
+cp -a ./CNAME "$TMP_DIR"/ 
+
 # Commit & push
 git -C "$TMP_DIR" add -A
 if git -C "$TMP_DIR" diff --cached --quiet; then
