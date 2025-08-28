@@ -11,8 +11,15 @@ toc: true
 hidden: true                # Some themes check this
 hiddenFromHomePage: true    # Hides from home page list
 hiddenFromSearch: true      # (if theme supports search)
+outputs: ["HTML"]               # no JSON/RSS for this page
+robots: "noindex, nofollow"
 showFullContent: false
+
+_build:
+  list: never
+  render: always
 ---
+
 # **Stronglandia: A Secure Nation of Eternal Victims**  
 *An Allegorical Satire*
 
