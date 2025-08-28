@@ -8,6 +8,9 @@ categories: [sataire,blog,fiction]
 tags: [sataire]
 keywords: ["", ""]
 toc: true
+hidden: true                # Some themes check this
+hiddenFromHomePage: true    # Hides from home page list
+hiddenFromSearch: true      # (if theme supports search)
 showFullContent: false
 ---
 # **Stronglandia: A Secure Nation of Eternal Victims**  
